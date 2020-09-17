@@ -20,14 +20,14 @@ class LinkedList:
     def add_to_tail(self, value):
         new_node = Node(value)
         if self.head is None and self.tail is None:
-            self.header = new_node
+            self.head = new_node
             self.tail = new_node
 
         else: 
             self.tail.set_next(new_node)
             self.tail = new_node
 
-    def remove_tail(self, value):
+    def remove_tail(self):
         if self.head is None and self.tail is None:
             return None
 
@@ -42,13 +42,13 @@ class LinkedList:
             value = self.tail.get_value()
             current_node = self.head
 
-            while current_node.get_next()!= self.tail:
+            while current_node.get_next() != self.tail:
                 current_node = current_node.get_next()
 
-                self.tail = current_node
-                self.tail.set_next(None)
+            self.tail = current_node #Lines were indented into block at line 46-cause of test fail
+            self.tail.set_next(None) #
 
-                return value
+            return value             #
 
     def remove_head(self):
         if self.head is None and self.tail is None:
@@ -65,3 +65,9 @@ class LinkedList:
             self.head = self.head.get_next()
 
             return value
+
+
+
+
+
+
